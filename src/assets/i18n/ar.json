@@ -1,0 +1,10 @@
+{
+  "titletable": "قائمة السيارات ",
+  "marque": "نوع ",
+  "kilometrage": "عدد الأميال",
+  "Affecteddate": "تاريخ التسليم ",
+  "periode":"الفترة",
+  "affectedTo": "تتأثر",
+  "status": "الحالة",
+  "action": "عمل"
+}

@@ -1,0 +1,116 @@
+<form novalidate [formGroup]="myform">
+
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <h2>Register New User</h2>
+      <hr>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3 field-label-responsive">
+      <label for="name">Name</label>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+          <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
+          <input type="text" name="name" class="form-control" id="name" [(ngModel)]="name"
+                 placeholder="John Doe" required autofocus formControlName="forname">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3"
+         *ngIf="myform.controls.forname.invalid&&(myform.controls.forname.dirty || myform.controls.forname.touched)">
+      <div class="form-control-feedback">
+                        <span class="text-danger align-middle">
+                           Invalid Name
+                        </span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3 field-label-responsive">
+      <label for="email">E-Mail Address</label>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+          <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
+          <input type="text" name="email" class="form-control" id="email" [(ngModel)]="email"
+                 placeholder="you@example.com" required autofocus formControlName="foremail">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-control-feedback"
+           *ngIf="myform.controls.foremail.invalid&&(myform.controls.foremail.dirty || myform.controls.foremail.touched)">
+                        <span class="text-danger align-middle">
+                            Invalid Email
+                        </span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3 field-label-responsive">
+      <label>Password</label>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group has-danger">
+        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+          <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
+          <input type="password" name="password" class="form-control" id="pwd"
+                 placeholder="Password" required [(ngModel)]="pwd" formControlName="forpwd">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-control-feedback"
+           *ngIf="myform.controls.forpwd.invalid&&(myform.controls.forpwd.dirty || myform.controls.forpwd.touched)">
+                        <span class="text-danger align-middle">
+                            Invalid pwd
+                        </span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3 field-label-responsive">
+      <label>Confirm Password</label>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+          <div class="input-group-addon" style="width: 2.6rem">
+            <i class="fa fa-repeat"></i>
+          </div>
+          <input type="password" name="password-confirmation" class="form-control"
+                 id="password-confirm" placeholder="Password" required [(ngModel)]="confirm"
+                 formControlName="forconfirmpwd">
+
+        </div>
+        <span class="text-danger align-middle" *ngIf="pwd!=confirm">
+    Confirm pwd</span>
+      </div>
+
+    </div>
+    <div class="col-md-3"
+         *ngIf="myform.controls.forconfirmpwd.invalid&&(myform.controls.forconfirmpwd.dirty || myform.controls.forconfirmpwd.touched)">
+      <div class="form-control-feedback">
+  <span class="text-danger align-middle">
+                          <i class="fa fa-close"> Invalid Confirm pwd</i>
+
+                        </span>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <button type="submit" [disabled]="myform.invalid || pwd!=confirm" class="btn btn-success" (click)="register()"><i
+        class="fa fa-user-plus"></i> Register
+      </button>
+    </div>
+  </div>
+</form>

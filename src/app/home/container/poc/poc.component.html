@@ -1,0 +1,57 @@
+<input type="text" [(ngModel)]="data" class="form-control"> {{data}}
+<hr>
+<button (click)="decrement()" *ngIf="counter > 0" class="btn btn-danger">-</button>
+<span>{{counter}}</span>
+<button (click)="increment()" class="btn btn-success">+</button>
+<hr>
+<div class="form-group">
+  <label appMydrective>Name :</label>
+  <input type="text" class="form-control" [(ngModel)]="name">
+  <label>Email :</label>
+  <div class="form-group" *ngIf='name=="ghassen"'>
+    <input type="email" class="form-control" [(ngModel)]="email">
+    <label>Phone :</label>
+  </div>
+  <input type="tel" class="form-control" [(ngModel)]="phone">
+  <label>About :</label>
+  <textarea type="text" class="form-control" [(ngModel)]="about"></textarea>
+</div>
+<div class="form-group">
+  <button class="btn btn-success" (click)="save()">Save</button>
+  <button class="btn btn-danger" (click)="reset()">Reset</button>
+</div>
+{{user|json}}
+<hr>
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <td>Search :</td>
+    <td><input type="text" class="form-control" [(ngModel)]='search'></td>
+  </tr>
+  <tr>
+    <td>ID</td>
+    <td>Name</td>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let item of HEROES | mypipes :search">
+    <td>{{item.id }}</td>
+    <td [ngClass]="{'rouge':item.name.length>6,'green':item.name.length<6}">{{item.name }}</td>
+  </tr>
+  </tbody>
+</table>
+<mat-radio-group>
+  <mat-radio-button value="1">Option
+    1
+  </mat-radio-button>
+  <mat-radio-button value="2">Option
+    2
+  </mat-radio-button>
+</mat-radio-group>
+<mat-form-field>
+  <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+<hr>
+{{result|json}}
